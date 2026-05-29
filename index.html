@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="zh-CN">
+<html lang="ko">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -27,7 +27,7 @@
   --shadow-md: 0 4px 12px rgba(0,0,0,0.08);
   --radius: 8px;
   --radius-sm: 4px;
-  --font: -apple-system, BlinkMacSystemFont, "Segoe UI", "Noto Sans SC", "PingFang SC", "Microsoft YaHei", sans-serif;
+  --font: -apple-system, BlinkMacSystemFont, "Segoe UI", "Noto Sans KR", "Apple SD Gothic Neo", "Malgun Gothic", sans-serif;
   --font-mono: "SF Mono", "Fira Code", "Cascadia Code", Consolas, monospace;
   --sidebar-width: 240px;
   --topbar-height: 52px;
@@ -262,16 +262,16 @@ mark{background:rgba(255,200,0,0.35);color:inherit;border-radius:2px;padding:0 2
       <span class="topbar-logo">🤖 Agent Learning Hub</span>
     </div>
     <nav class="topbar-center" id="tabNav">
-      <button class="tab-btn active" data-tab="learn">学习路线</button>
-      <button class="tab-btn" data-tab="ladder">项目阶梯</button>
-      <button class="tab-btn" data-tab="resources">精选资源</button>
+      <button class="tab-btn active" data-tab="learn">학습 로드맵</button>
+      <button class="tab-btn" data-tab="ladder">프로젝트 사다리</button>
+      <button class="tab-btn" data-tab="resources">엄선 자료</button>
     </nav>
     <div class="topbar-right">
       <div class="search-wrap">
         <span class="search-icon">🔍</span>
-        <input type="text" class="search-input" id="searchInput" placeholder="搜索..." oninput="doSearch()">
+        <input type="text" class="search-input" id="searchInput" placeholder="검색..." oninput="doSearch()">
       </div>
-      <button class="theme-btn" onclick="toggleTheme()" id="themeBtn" aria-label="Toggle theme" title="切换暗色/亮色模式">🌙</button>
+      <button class="theme-btn" onclick="toggleTheme()" id="themeBtn" aria-label="Toggle theme" title="어두운/밝은 모드 전환">🌙</button>
     </div>
   </header>
 
@@ -289,35 +289,35 @@ mark{background:rgba(255,200,0,0.35);color:inherit;border-radius:2px;padding:0 2
 // ===== Data =====
 const learningData = {
   priorityTable: [
-    { priority:1, learn:'Claude Code / Codex-style coding agents', why:'真实代码库、shell、文件编辑、测试、权限、上下文压缩，是最好的 agent 工程样本。' },
-    { priority:2, learn:'Agent harness engineering', why:'agent 的能力很大一部分来自 harness：工具协议、权限、状态、反馈、回放、CI、评测。' },
-    { priority:3, learn:'OpenClaw / Hermes-style personal agents', why:'长运行、本地优先、跨应用、记忆、skills、消息入口，更像"个人操作系统"。' },
-    { priority:4, learn:'Skills / MCP / A2A / ACP', why:'skills 负责能力复用，MCP 连接工具，A2A 连接 agent，ACP 连接宿主应用。' },
-    { priority:5, learn:'Evaluation and safety', why:'没有 eval、trace、权限边界的 agent 只能算 demo。' }
+    { priority:1, learn:'Claude Code / Codex-style coding agents', why:'실제 코드베이스, shell, 파일 편집, 테스트, 권한, 컨텍스트 압축을 다루는 최고의 agent 엔지니어링 샘플입니다.' },
+    { priority:2, learn:'Agent harness engineering', why:'agent의 역량 중 큰 부분은 harness에서 나옵니다: 도구 프로토콜, 권한, 상태, 피드백, 리플레이, CI, 평가.' },
+    { priority:3, learn:'OpenClaw / Hermes-style personal agents', why:'장기 실행, 로컬 우선, 앱 간 연동, 메모리, skills, 메시지 진입점은 "개인 운영체제"에 더 가깝습니다.' },
+    { priority:4, learn:'Skills / MCP / A2A / ACP', why:'skills는 능력 재사용을 맡고, MCP는 도구를 연결하며, A2A는 agent를 연결하고, ACP는 호스트 앱을 연결합니다.' },
+    { priority:5, learn:'Evaluation and safety', why:'eval, trace, 권한 경계가 없는 agent는 demo라고 볼 수밖에 없습니다.' }
   ],
   stages: [
     {
-      id:'stage0', title:'Stage 0: 理解 Agent 是什么',
+      id:'stage0', title:'Stage 0: Agent가 무엇인지 이해하기',
       items:[
-        '区分 chatbot、workflow、agent、multi-agent。',
-        '理解 agent 的基本循环：observe → think → act → observe。',
-        '明白什么时候不该用 agent：任务可预测、流程稳定、普通脚本能解决时，agent 反而增加不确定性。',
-        '读完 <a href="https://www.anthropic.com/engineering/building-effective-agents" target="_blank">Anthropic: Building effective agents</a>。',
-        '读完 <a href="https://openai.com/business/guides-and-resources/a-practical-guide-to-building-ai-agents/" target="_blank">OpenAI: A practical guide to building agents</a>。'
+        'chatbot, workflow, agent, multi-agent를 구분한다.',
+        'agent의 기본 루프를 이해한다: observe -> think -> act -> observe.',
+        '언제 agent를 쓰지 말아야 하는지 이해한다: 작업이 예측 가능하고 흐름이 안정적이며 일반 스크립트로 해결할 수 있다면 agent는 오히려 불확실성을 늘린다.',
+        '끝까지 읽기: <a href="https://www.anthropic.com/engineering/building-effective-agents" target="_blank">Anthropic: Building effective agents</a>.',
+        '끝까지 읽기: <a href="https://openai.com/business/guides-and-resources/a-practical-guide-to-building-ai-agents/" target="_blank">OpenAI: A practical guide to building agents</a>.'
       ],
       reading: '',
       projects: '',
-      output: '写一页短笔记，回答「我的场景为什么需要 agent，而不是普通 workflow？」'
+      output: '한 페이지짜리 짧은 노트를 작성해 "내 상황에는 왜 일반 workflow가 아니라 agent가 필요한가?"에 답한다.'
     },
     {
-      id:'stage1', title:'Stage 1: 构建最小 Agent Loop',
+      id:'stage1', title:'Stage 1: 최소 Agent Loop 만들기',
       items:[
-        '会用一个 LLM API 完成普通对话。',
-        '会让模型输出结构化 JSON。',
-        '会定义一个工具函数，例如 search、calculator、read_file。',
-        '会解析模型的 tool call / function call。',
-        '会执行工具，并把工具结果喂回模型。',
-        '会给 agent loop 加最大步数、超时和错误处理。'
+        '하나의 LLM API로 일반 대화를 구현할 수 있다.',
+        '모델이 구조화된 JSON을 출력하게 할 수 있다.',
+        'search, calculator, read_file 같은 도구 함수를 정의할 수 있다.',
+        '모델의 tool call / function call을 파싱할 수 있다.',
+        '도구를 실행하고 그 결과를 모델에 다시 전달할 수 있다.',
+        'agent loop에 최대 단계 수, 타임아웃, 오류 처리를 추가할 수 있다.'
       ],
       reading: `<table><thead><tr><th>Resource</th></tr></thead><tbody>
         <tr><td><a href="https://platform.openai.com/docs/guides/function-calling" target="_blank">OpenAI Function Calling</a></td></tr>
@@ -325,16 +325,16 @@ const learningData = {
         <tr><td><a href="https://docs.anthropic.com/en/docs/agents-and-tools/tool-use/overview" target="_blank">Claude Tool Use</a></td></tr>
       </tbody></table>`,
       projects: '',
-      output: '一个 50-150 行的最小 agent，可以选择工具、执行工具、返回最终答案。'
+      output: '도구를 선택하고 실행한 뒤 최종 답변을 반환할 수 있는 50-150줄짜리 최소 agent.'
     },
     {
-      id:'stage2', title:'Stage 2: 学习工具调用、RAG 与记忆',
+      id:'stage2', title:'Stage 2: 도구 호출, RAG, 메모리 배우기',
       items:[
-        '会做检索增强生成：chunk、embed、retrieve、answer with citations。',
-        '会把搜索、数据库、文件、浏览器、代码执行接成工具。',
-        '会区分短期上下文、会话记忆、长期记忆。',
-        '会处理工具失败、空结果、重复调用、幻觉引用。',
-        '会让 agent 在回答里给出来源或证据。'
+        '검색 증강 생성을 할 수 있다: chunk, embed, retrieve, answer with citations.',
+        '검색, 데이터베이스, 파일, 브라우저, 코드 실행을 도구로 연결할 수 있다.',
+        '단기 컨텍스트, 세션 메모리, 장기 메모리를 구분할 수 있다.',
+        '도구 실패, 빈 결과, 반복 호출, 환각 인용을 처리할 수 있다.',
+        'agent가 답변에 출처나 근거를 제시하게 할 수 있다.'
       ],
       reading: `<table><thead><tr><th>Resource</th></tr></thead><tbody>
         <tr><td><a href="https://docs.llamaindex.ai/en/stable/use_cases/agents/" target="_blank">LlamaIndex Agents</a></td></tr>
@@ -343,49 +343,49 @@ const learningData = {
         <tr><td><a href="https://modelcontextprotocol.io/" target="_blank">Model Context Protocol</a></td></tr>
       </tbody></table>`,
       projects: '<table><thead><tr><th>Project</th><th>Why It Fits Stage 2</th></tr></thead><tbody>' + [
-        ['<a href="https://github.com/assafelovic/gpt-researcher" target="_blank">GPT Researcher</a>','最接近"资料研究助手"的成品：搜索、抓取、筛选、引用、生成长报告。'],
-        ['<a href="https://github.com/langchain-ai/open_deep_research" target="_blank">Open Deep Research</a>','LangGraph 写的 deep research 示例，适合学多轮搜索、状态管理和引用输出。'],
-        ['<a href="https://github.com/stanford-oval/storm" target="_blank">STORM</a>','Stanford OVAL 的研究写作系统，适合学 outline、question asking、多视角资料综合。'],
-        ['<a href="https://github.com/khoj-ai/khoj" target="_blank">Khoj</a>','个人 second brain，适合学本地文档、网页、语义搜索和长期记忆。'],
-        ['<a href="https://github.com/onyx-dot-app/onyx" target="_blank">Onyx</a>','企业级 RAG/search assistant，适合学 connectors、hybrid search、权限和生产化。'],
-        ['<a href="https://github.com/Mintplex-Labs/anything-llm" target="_blank">AnythingLLM</a>','本地 RAG + agents 产品，适合初学者快速理解完整应用形态。'],
-        ['<a href="https://github.com/infiniflow/ragflow" target="_blank">RAGFlow</a>','文档理解型 RAG 引擎，适合学 ingestion、chunking、retrieval、grounded answer。'],
-        ['<a href="https://github.com/mem0ai/mem0" target="_blank">mem0</a>','记忆层组件，适合学如何给 agent 加长期 memory。'],
-        ['<a href="https://github.com/letta-ai/letta" target="_blank">Letta</a>','面向 stateful agents 的 memory/context 平台，适合学上下文管理。']
+        ['<a href="https://github.com/assafelovic/gpt-researcher" target="_blank">GPT Researcher</a>','"자료 조사 도우미"에 가장 가까운 완성형 제품: 검색, 수집, 선별, 인용, 긴 보고서 생성.'],
+        ['<a href="https://github.com/langchain-ai/open_deep_research" target="_blank">Open Deep Research</a>','LangGraph로 작성된 deep research 예제로, 다중 검색, 상태 관리, 인용 출력을 배우기 좋습니다.'],
+        ['<a href="https://github.com/stanford-oval/storm" target="_blank">STORM</a>','Stanford OVAL의 연구 글쓰기 시스템으로, outline, question asking, 다중 관점 자료 종합을 배우기 좋습니다.'],
+        ['<a href="https://github.com/khoj-ai/khoj" target="_blank">Khoj</a>','개인 second brain으로, 로컬 문서, 웹페이지, 의미 검색, 장기 메모리를 배우기 좋습니다.'],
+        ['<a href="https://github.com/onyx-dot-app/onyx" target="_blank">Onyx</a>','엔터프라이즈급 RAG/search assistant로, connectors, hybrid search, 권한, 프로덕션화를 배우기 좋습니다.'],
+        ['<a href="https://github.com/Mintplex-Labs/anything-llm" target="_blank">AnythingLLM</a>','로컬 RAG + agents 제품으로, 초보자가 완성형 앱 구조를 빠르게 이해하기 좋습니다.'],
+        ['<a href="https://github.com/infiniflow/ragflow" target="_blank">RAGFlow</a>','문서 이해형 RAG 엔진으로, ingestion, chunking, retrieval, grounded answer를 배우기 좋습니다.'],
+        ['<a href="https://github.com/mem0ai/mem0" target="_blank">mem0</a>','메모리 계층 컴포넌트로, agent에 장기 memory를 추가하는 방법을 배우기 좋습니다.'],
+        ['<a href="https://github.com/letta-ai/letta" target="_blank">Letta</a>','stateful agents를 위한 memory/context 플랫폼으로, 컨텍스트 관리를 배우기 좋습니다.']
       ].map(r=>`<tr><td>${r[0]}</td><td>${r[1]}</td></tr>`).join('')+'</tbody></table>',
-      output: '一个资料研究助手，输入主题后自动搜索、筛选、总结并输出引用链接。'
+      output: '주제를 입력하면 자동으로 검색, 선별, 요약하고 인용 링크를 출력하는 자료 조사 도우미.'
     },
     {
-      id:'stage3', title:'Stage 3: 深入研究一个现代 Agent Harness',
+      id:'stage3', title:'Stage 3: 현대 Agent Harness 하나를 깊이 연구하기',
       items:[
-        '读懂一个 agent harness 的目录结构。',
-        '找出它的 agent loop、tool registry、permission gate、session store、context compaction。',
-        '跑通它的最小示例，并加一个你自己的工具。',
-        '观察一次完整 trace，解释每一步为什么发生。',
-        '把同一个任务分别用「裸 agent loop」和「harness」实现，对比差异。'
+        'agent harness 하나의 디렉터리 구조를 읽고 이해한다.',
+        '그 안의 agent loop, tool registry, permission gate, session store, context compaction을 찾아낸다.',
+        '최소 예제를 실행하고 자신만의 도구 하나를 추가한다.',
+        '완전한 trace 하나를 관찰하고 각 단계가 왜 발생했는지 설명한다.',
+        '같은 작업을 "bare agent loop"와 "harness"로 각각 구현하고 차이를 비교한다.'
       ],
-      reading: `<p style="margin-bottom:12px">先选一个现代 agent 系统学深。这里的重点不是"框架 API 怎么调"，而是它如何组织工具、上下文、权限、状态、日志、子任务和反馈。</p>
+      reading: `<p style="margin-bottom:12px">먼저 현대적인 agent 시스템 하나를 골라 깊이 학습하세요. 핵심은 "프레임워크 API를 어떻게 호출하는가"가 아니라 도구, 컨텍스트, 권한, 상태, 로그, 하위 작업, 피드백을 어떻게 조직하는가입니다.</p>
       <table><thead><tr><th>System</th><th>Best For</th><th>Learn This If You Want To</th></tr></thead><tbody>` + [
-        ['<a href="https://code.claude.com/docs/en/overview" target="_blank">Claude Code Docs</a>','Coding agent product','学真实 coding agent 的 CLI、工具、权限、hooks、subagents、MCP。'],
-        ['<a href="https://github.com/shareAI-lab/learn-claude-code" target="_blank">learn-claude-code</a>','From-scratch agent harness','从 0 到 1 复刻 Claude Code-like harness。'],
-        ['<a href="https://github.com/shareAI-lab/claw0" target="_blank">claw0</a>','From-scratch OpenClaw gateway','从 agent loop 一路构建 session、channel、gateway、memory、heartbeat、delivery、resilience、concurrency。'],
-        ['<a href="https://github.com/datawhalechina/hello-agents" target="_blank">hello-agents</a>','Chinese agent tutorial','从零开始构建智能体，适合系统补 Agent 原理与实践。'],
-        ['<a href="https://github.com/openclaw/openclaw" target="_blank">OpenClaw</a>','Local-first personal agent','学本地长运行 agent、skills、消息入口、系统工具和安全边界。'],
-        ['<a href="https://github.com/NousResearch/hermes-agent" target="_blank">Hermes Agent</a>','Self-hosted growing agent','学长期记忆、skills、toolsets、多平台消息网关和迁移能力。'],
-        ['<a href="https://github.com/ttguy0707/CyberClaw" target="_blank">CyberClaw</a>','Transparent agent architecture','学全行为审计、两段式安全调用、双水位记忆和心跳任务。'],
-        ['<a href="https://langchain-ai.github.io/langgraph/" target="_blank">LangGraph</a>','Stateful graph orchestration','学状态图、可恢复执行和可控编排。']
+        ['<a href="https://code.claude.com/docs/en/overview" target="_blank">Claude Code Docs</a>','Coding agent product','실제 coding agent의 CLI, 도구, 권한, hooks, subagents, MCP를 배웁니다.'],
+        ['<a href="https://github.com/shareAI-lab/learn-claude-code" target="_blank">learn-claude-code</a>','From-scratch agent harness','0에서 1까지 Claude Code-like harness를 재현합니다.'],
+        ['<a href="https://github.com/shareAI-lab/claw0" target="_blank">claw0</a>','From-scratch OpenClaw gateway','agent loop부터 session, channel, gateway, memory, heartbeat, delivery, resilience, concurrency까지 구축합니다.'],
+        ['<a href="https://github.com/datawhalechina/hello-agents" target="_blank">hello-agents</a>','Chinese agent tutorial','처음부터 지능형 agent를 구축하며 Agent 원리와 실습을 체계적으로 보강하기 좋습니다.'],
+        ['<a href="https://github.com/openclaw/openclaw" target="_blank">OpenClaw</a>','Local-first personal agent','로컬 장기 실행 agent, skills, 메시지 진입점, 시스템 도구, 보안 경계를 배웁니다.'],
+        ['<a href="https://github.com/NousResearch/hermes-agent" target="_blank">Hermes Agent</a>','Self-hosted growing agent','장기 메모리, skills, toolsets, 멀티 플랫폼 메시지 게이트웨이, 마이그레이션 역량을 배웁니다.'],
+        ['<a href="https://github.com/ttguy0707/CyberClaw" target="_blank">CyberClaw</a>','Transparent agent architecture','전체 행동 감사, 2단계 안전 호출, 이중 수위 메모리, heartbeat 작업을 배웁니다.'],
+        ['<a href="https://langchain-ai.github.io/langgraph/" target="_blank">LangGraph</a>','Stateful graph orchestration','상태 그래프, 재개 가능한 실행, 제어 가능한 오케스트레이션을 배웁니다.']
       ].map(r=>`<tr><td>${r[0]}</td><td>${r[1]}</td><td>${r[2]}</td></tr>`).join('')+'</tbody></table>',
       projects: '',
-      output: '一个可调试的 agent harness demo，包含 README、运行步骤、示例输入输出和失败记录。'
+      output: '디버깅 가능한 agent harness demo. README, 실행 단계, 예제 입출력, 실패 기록을 포함한다.'
     },
     {
-      id:'stage4', title:'Stage 4: 多 Agent 是协调问题，不是魔法',
+      id:'stage4', title:'Stage 4: Multi-Agent는 마법이 아니라 조율 문제',
       items:[
-        '理解 planner / executor / reviewer / critic / router 等常见角色。',
-        '学会用 supervisor 或 graph 管理多 agent，而不是让 agent 随便聊天。',
-        '会定义每个 agent 的职责边界、输入输出 schema、停止条件。',
-        '会处理循环、争论、任务漂移、上下文膨胀。',
-        '会判断什么时候单 agent 更好。'
+        'planner / executor / reviewer / critic / router 같은 흔한 역할을 이해한다.',
+        'agent끼리 마음대로 대화하게 두는 대신 supervisor 또는 graph로 multi-agent를 관리하는 법을 배운다.',
+        '각 agent의 책임 경계, 입출력 schema, 중지 조건을 정의할 수 있다.',
+        '루프, 논쟁, 작업 표류, 컨텍스트 팽창을 처리할 수 있다.',
+        '언제 단일 agent가 더 나은지 판단할 수 있다.'
       ],
       reading: `<table><thead><tr><th>Resource</th></tr></thead><tbody>
         <tr><td><a href="https://code.claude.com/docs/en/sub-agents" target="_blank">Claude Code Subagents</a></td></tr>
@@ -395,19 +395,19 @@ const learningData = {
         <tr><td><a href="https://agentclientprotocol.com/" target="_blank">Agent Client Protocol</a></td></tr>
       </tbody></table>`,
       projects: '',
-      output: '一个小型多 agent 系统，例如 research → write → review → revise。'
+      output: 'research -> write -> review -> revise 같은 소형 multi-agent 시스템.'
     },
     {
-      id:'stage5', title:'Stage 5: 学习 Skills、协议与能力打包',
+      id:'stage5', title:'Stage 5: Skills, 프로토콜, 능력 패키징 배우기',
       items:[
-        '理解 Skill 和 Tool 的区别：tool 是可调用接口，skill 是可复用流程知识。',
-        '理解 Skill 和 Prompt 的区别：prompt 通常是一次性指令，skill 是可发现、可版本化、可分发的能力包。',
-        '理解 Skill 和 MCP 的区别：MCP 接入外部工具/数据源，skill 告诉 agent 如何完成一类任务。',
-        '阅读 Claude Code Skills 的文件结构和触发机制。',
-        '阅读 OpenClaw Skills 的加载、作用域和安全边界。',
-        '写一个最小 <code>SKILL.md</code>，包含 name、description、何时使用、步骤、验收标准。',
-        '给 skill 加一个脚本或模板文件，并说明 agent 什么时候才需要加载它。',
-        '给 skill 写一个 smoke test，验证它是否真的提升任务成功率。'
+        'Skill과 Tool의 차이를 이해한다: tool은 호출 가능한 인터페이스이고, skill은 재사용 가능한 절차 지식이다.',
+        'Skill과 Prompt의 차이를 이해한다: prompt는 보통 일회성 지시이고, skill은 발견 가능하고 버전 관리되며 배포 가능한 능력 패키지다.',
+        'Skill과 MCP의 차이를 이해한다: MCP는 외부 도구/데이터 소스를 연결하고, skill은 agent에게 특정 유형의 작업을 완료하는 방법을 알려준다.',
+        'Claude Code Skills의 파일 구조와 트리거 메커니즘을 읽는다.',
+        'OpenClaw Skills의 로딩, 스코프, 보안 경계를 읽는다.',
+        'name, description, 사용 시점, 단계, 검수 기준을 포함한 최소 <code>SKILL.md</code>를 작성한다.',
+        'skill에 스크립트나 템플릿 파일을 추가하고 agent가 언제 그것을 로드해야 하는지 설명한다.',
+        'skill에 smoke test를 작성해 실제로 작업 성공률을 높이는지 검증한다.'
       ],
       reading: `<table><thead><tr><th>Resource</th></tr></thead><tbody>
         <tr><td><a href="https://code.claude.com/docs/en/skills" target="_blank">Claude Code Skills</a></td></tr>
@@ -419,16 +419,16 @@ const learningData = {
         <tr><td><a href="https://agentclientprotocol.com/" target="_blank">Agent Client Protocol</a></td></tr>
       </tbody></table>`,
       projects: '',
-      output: '一个可复用 skill，例如 code-review、research-report、migration-helper、pdf-extraction 或 release-note-writer。'
+      output: 'code-review, research-report, migration-helper, pdf-extraction, release-note-writer 같은 재사용 가능한 skill.'
     },
     {
-      id:'stage6', title:'Stage 6: 浏览器与 Computer-Use Agent',
+      id:'stage6', title:'Stage 6: 브라우저와 Computer-Use Agent',
       items:[
-        '理解 browser agent 和普通 API tool 的区别。',
-        '会用 Playwright 或 browser-use 做网页观察和点击。',
-        '会给浏览器操作加安全限制：不登录敏感账号、不越权、不绕过平台规则。',
-        '会处理页面变化、弹窗、加载失败、元素定位失败。',
-        '会记录截图、DOM、动作日志，方便复盘。'
+        'browser agent와 일반 API tool의 차이를 이해한다.',
+        'Playwright 또는 browser-use로 웹페이지 관찰과 클릭을 수행할 수 있다.',
+        '브라우저 작업에 안전 제한을 추가할 수 있다: 민감한 계정에 로그인하지 않고, 권한을 넘지 않으며, 플랫폼 규칙을 우회하지 않는다.',
+        '페이지 변화, 팝업, 로드 실패, 요소 위치 찾기 실패를 처리할 수 있다.',
+        '스크린샷, DOM, 동작 로그를 기록해 사후 검토를 쉽게 할 수 있다.'
       ],
       reading: `<table><thead><tr><th>Resource</th></tr></thead><tbody>
         <tr><td><a href="https://docs.anthropic.com/en/docs/agents-and-tools/tool-use/computer-use-tool" target="_blank">Claude Computer Use</a></td></tr>
@@ -437,17 +437,17 @@ const learningData = {
         <tr><td><a href="https://arxiv.org/abs/2401.13649" target="_blank">VisualWebArena</a></td></tr>
       </tbody></table>`,
       projects: '',
-      output: '一个只操作公开网页的 browser agent，例如打开网页、提取信息、生成摘要。'
+      output: '공개 웹페이지만 조작하는 browser agent. 예: 웹페이지 열기, 정보 추출, 요약 생성.'
     },
     {
-      id:'stage7', title:'Stage 7: 评测、可观测性与安全',
+      id:'stage7', title:'Stage 7: 평가, 관측 가능성, 안전',
       items:[
-        '为 agent 准备固定测试集，而不是只看 demo。',
-        '记录成功率、失败原因、工具调用次数、成本、延迟。',
-        '会看 trace，知道失败发生在 prompt、工具、检索、模型还是状态管理。',
-        '给危险工具加人工确认，例如发邮件、删文件、付款、发布内容。',
-        '了解 prompt injection、data exfiltration、tool abuse 等风险。',
-        '会用回归测试防止 prompt 或工具改动后能力退化。'
+        'demo만 보지 말고 agent용 고정 테스트 세트를 준비한다.',
+        '성공률, 실패 원인, 도구 호출 횟수, 비용, 지연 시간을 기록한다.',
+        'trace를 읽고 실패가 prompt, 도구, 검색, 모델, 상태 관리 중 어디에서 발생했는지 알 수 있다.',
+        '메일 발송, 파일 삭제, 결제, 콘텐츠 게시 같은 위험 도구에는 사람 확인을 추가한다.',
+        'prompt injection, data exfiltration, tool abuse 같은 위험을 이해한다.',
+        '회귀 테스트로 prompt나 도구 변경 후 역량이 퇴화하지 않도록 막을 수 있다.'
       ],
       reading: `<table><thead><tr><th>Resource</th></tr></thead><tbody>
         <tr><td><a href="https://platform.openai.com/docs/guides/evals" target="_blank">OpenAI Evals</a></td></tr>
@@ -457,171 +457,171 @@ const learningData = {
         <tr><td><a href="https://arxiv.org/abs/2310.06770" target="_blank">SWE-bench</a></td></tr>
       </tbody></table>`,
       projects: '',
-      output: '一个 agent eval 表格，至少包含 20 个任务、期望结果、实际结果、失败分类。'
+      output: '최소 20개 작업, 기대 결과, 실제 결과, 실패 분류를 포함한 agent eval 표.'
     },
     {
-      id:'stage8', title:'Stage 8: 交付一个真正的 Agent',
+      id:'stage8', title:'Stage 8: 진짜 Agent 출시하기',
       items:[
-        '有明确用户、明确任务、明确成功标准。',
-        '有日志、trace、错误重试、超时、成本上限。',
-        '有权限边界和人工确认机制。',
-        '有部署方式：CLI、Web app、Slack bot、GitHub Action 或后台任务。',
-        '有 README：怎么运行、怎么配置 key、怎么扩展工具、有哪些限制。'
+        '명확한 사용자, 명확한 작업, 명확한 성공 기준이 있다.',
+        '로그, trace, 오류 재시도, 타임아웃, 비용 상한이 있다.',
+        '권한 경계와 사람 확인 메커니즘이 있다.',
+        '배포 방식이 있다: CLI, Web app, Slack bot, GitHub Action 또는 백그라운드 작업.',
+        'README가 있다: 실행 방법, key 설정 방법, 도구 확장 방법, 제한 사항.'
       ],
       reading: '',
       projects: '',
-      output: '一个别人能 clone 下来跑的 agent 项目。'
+      output: '다른 사람이 clone해서 실행할 수 있는 agent 프로젝트.'
     }
   ]
 };
 
 const ladderData = [
-  { level:1, project:'Calculator Agent', desc:'最小 tool call loop' },
-  { level:2, project:'Web Research Agent', desc:'搜索、筛选、引用、总结' },
-  { level:3, project:'PDF QA Agent', desc:'RAG、chunk、retrieval、citation' },
-  { level:4, project:'Coding Review Agent', desc:'读取 diff、风险排序、测试建议' },
-  { level:5, project:'Browser Agent', desc:'页面观察、点击、提取、失败恢复' },
-  { level:6, project:'Claude Code-like Nano Agent', desc:'shell、文件编辑、权限、session、compact' },
-  { level:7, project:'OpenClaw-like Gateway', desc:'channel、routing、session、memory、heartbeat、delivery' },
-  { level:8, project:'Reusable Skill Pack', desc:'SKILL.md、脚本、模板、触发条件、smoke test' },
-  { level:9, project:'Multi-Agent Writer', desc:'planner、writer、reviewer 协作' },
-  { level:10, project:'Personal Agent', desc:'OpenClaw/Hermes-style 记忆、skills、消息入口' },
-  { level:11, project:'Production Harness', desc:'evals、trace、权限、CI、runner、回放' }
+  { level:1, project:'Calculator Agent', desc:'최소 tool call loop' },
+  { level:2, project:'Web Research Agent', desc:'검색, 선별, 인용, 요약' },
+  { level:3, project:'PDF QA Agent', desc:'RAG, chunk, retrieval, citation' },
+  { level:4, project:'Coding Review Agent', desc:'diff 읽기, 위험도 정렬, 테스트 제안' },
+  { level:5, project:'Browser Agent', desc:'페이지 관찰, 클릭, 추출, 실패 복구' },
+  { level:6, project:'Claude Code-like Nano Agent', desc:'shell, 파일 편집, 권한, session, compact' },
+  { level:7, project:'OpenClaw-like Gateway', desc:'channel, routing, session, memory, heartbeat, delivery' },
+  { level:8, project:'Reusable Skill Pack', desc:'SKILL.md, 스크립트, 템플릿, 트리거 조건, smoke test' },
+  { level:9, project:'Multi-Agent Writer', desc:'planner, writer, reviewer 협업' },
+  { level:10, project:'Personal Agent', desc:'OpenClaw/Hermes-style 메모리, skills, 메시지 진입점' },
+  { level:11, project:'Production Harness', desc:'evals, trace, 권한, CI, runner, 리플레이' }
 ];
 
 const resourcesData = {
   officialGuides: {
-    title:'官方指南与博客',
+    title:'공식 가이드와 블로그',
     rows:[
-      ['<a href="https://www.anthropic.com/engineering/building-effective-agents" target="_blank">Anthropic: Building effective agents</a>','Agent 设计入门必读，讲清 workflow 和 agent 的边界。'],
-      ['<a href="https://code.claude.com/docs/en/overview" target="_blank">Claude Code Overview</a>','当前最值得研究的 coding agent 产品文档入口。'],
-      ['<a href="https://code.claude.com/docs/en/sub-agents" target="_blank">Claude Code Subagents</a>','学任务拆分、上下文隔离、专用子代理。'],
-      ['<a href="https://code.claude.com/docs/en/hooks" target="_blank">Claude Code Hooks</a>','学如何拦截、校验和扩展 agent 行为。'],
-      ['<a href="https://docs.claude.com/en/docs/claude-code/github-actions" target="_blank">Claude Code GitHub Actions</a>','学 coding agent 如何进入 PR / issue 工作流。'],
-      ['<a href="https://resources.anthropic.com/hubfs/Claude%20Code%20Advanced%20Patterns_%20Subagents%2C%20MCP%2C%20and%20Scaling%20to%20Real%20Codebases.pdf" target="_blank">Claude Code Advanced Patterns</a>','Anthropic 官方材料，覆盖 subagents、MCP 和真实代码库扩展。'],
-      ['<a href="https://openai.com/business/guides-and-resources/a-practical-guide-to-building-ai-agents/" target="_blank">OpenAI: A practical guide to building agents</a>','面向产品和工程团队的 agent 落地指南。'],
-      ['<a href="https://openai.com/index/new-tools-for-building-agents/" target="_blank">OpenAI: New tools for building agents</a>','Responses API、Agents SDK、工具和 tracing 的官方介绍。'],
-      ['<a href="https://platform.openai.com/docs/guides/agents-sdk/" target="_blank">OpenAI Agents SDK</a>','OpenAI 原生 agent 开发入口。'],
-      ['<a href="https://docs.anthropic.com/en/docs/agents-and-tools/tool-use/overview" target="_blank">Claude Tool Use</a>','Claude 工具调用机制。'],
-      ['<a href="https://docs.anthropic.com/en/docs/agents-and-tools/tool-use/computer-use-tool" target="_blank">Claude Computer Use</a>','电脑操作类 agent 的官方参考。'],
-      ['<a href="https://ai.google.dev/gemini-api/docs/function-calling" target="_blank">Gemini Function Calling</a>','Gemini 工具调用官方文档。'],
-      ['<a href="https://ai.google.dev/gemini-api/docs/code-execution" target="_blank">Gemini Code Execution</a>','Gemini 代码执行工具。'],
-      ['<a href="https://google.github.io/adk-docs/" target="_blank">Google Agent Development Kit</a>','Google 的 agent 开发框架。'],
-      ['<a href="https://modelcontextprotocol.io/" target="_blank">Model Context Protocol</a>','Agent 连接工具和数据源的重要协议。']
+      ['<a href="https://www.anthropic.com/engineering/building-effective-agents" target="_blank">Anthropic: Building effective agents</a>','Agent 설계 입문 필독 자료로, workflow와 agent의 경계를 명확히 설명합니다.'],
+      ['<a href="https://code.claude.com/docs/en/overview" target="_blank">Claude Code Overview</a>','현재 가장 연구할 만한 coding agent 제품 문서의 입구입니다.'],
+      ['<a href="https://code.claude.com/docs/en/sub-agents" target="_blank">Claude Code Subagents</a>','작업 분해, 컨텍스트 격리, 전용 subagent를 배웁니다.'],
+      ['<a href="https://code.claude.com/docs/en/hooks" target="_blank">Claude Code Hooks</a>','agent 동작을 가로채고 검증하고 확장하는 방법을 배웁니다.'],
+      ['<a href="https://docs.claude.com/en/docs/claude-code/github-actions" target="_blank">Claude Code GitHub Actions</a>','coding agent가 PR / issue workflow에 들어가는 방법을 배웁니다.'],
+      ['<a href="https://resources.anthropic.com/hubfs/Claude%20Code%20Advanced%20Patterns_%20Subagents%2C%20MCP%2C%20and%20Scaling%20to%20Real%20Codebases.pdf" target="_blank">Claude Code Advanced Patterns</a>','Anthropic 공식 자료로, subagents, MCP, 실제 코드베이스 확장을 다룹니다.'],
+      ['<a href="https://openai.com/business/guides-and-resources/a-practical-guide-to-building-ai-agents/" target="_blank">OpenAI: A practical guide to building agents</a>','제품 및 엔지니어링 팀을 위한 agent 도입 가이드입니다.'],
+      ['<a href="https://openai.com/index/new-tools-for-building-agents/" target="_blank">OpenAI: New tools for building agents</a>','Responses API, Agents SDK, 도구, tracing에 대한 공식 소개입니다.'],
+      ['<a href="https://platform.openai.com/docs/guides/agents-sdk/" target="_blank">OpenAI Agents SDK</a>','OpenAI 네이티브 agent 개발 입구입니다.'],
+      ['<a href="https://docs.anthropic.com/en/docs/agents-and-tools/tool-use/overview" target="_blank">Claude Tool Use</a>','Claude 도구 호출 메커니즘입니다.'],
+      ['<a href="https://docs.anthropic.com/en/docs/agents-and-tools/tool-use/computer-use-tool" target="_blank">Claude Computer Use</a>','컴퓨터 조작형 agent에 대한 공식 참고 자료입니다.'],
+      ['<a href="https://ai.google.dev/gemini-api/docs/function-calling" target="_blank">Gemini Function Calling</a>','Gemini 도구 호출 공식 문서입니다.'],
+      ['<a href="https://ai.google.dev/gemini-api/docs/code-execution" target="_blank">Gemini Code Execution</a>','Gemini 코드 실행 도구입니다.'],
+      ['<a href="https://google.github.io/adk-docs/" target="_blank">Google Agent Development Kit</a>','Google의 agent 개발 프레임워크입니다.'],
+      ['<a href="https://modelcontextprotocol.io/" target="_blank">Model Context Protocol</a>','Agent가 도구와 데이터 소스를 연결하는 중요한 프로토콜입니다.']
     ]
   },
   projectMap: {
-    title:'项目地图',
+    title:'프로젝트 지도',
     rows:[
-      ['Build From Scratch','<a href="https://github.com/shareAI-lab/learn-claude-code" target="_blank">learn-claude-code</a>, <a href="https://github.com/shareAI-lab/claw0" target="_blank">claw0</a>, <a href="https://github.com/datawhalechina/hello-agents" target="_blank">hello-agents</a>','agent loop、tool registry、session、context compaction、gateway、trace、subagents。'],
-      ['Personal / Always-On Agents','<a href="https://github.com/openclaw/openclaw" target="_blank">OpenClaw</a>, <a href="https://github.com/NousResearch/hermes-agent" target="_blank">Hermes Agent</a>, <a href="https://github.com/ttguy0707/CyberClaw" target="_blank">CyberClaw</a>','长运行、skills、记忆、消息入口、权限、安全审计。'],
-      ['Coding Agents','<a href="https://code.claude.com/docs/en/overview" target="_blank">Claude Code</a>, <a href="https://github.com/openai/codex" target="_blank">OpenAI Codex</a>, <a href="https://github.com/opencode-ai/opencode" target="_blank">OpenCode</a>, <a href="https://github.com/All-Hands-AI/OpenHands" target="_blank">OpenHands</a>, <a href="https://github.com/SWE-agent/SWE-agent" target="_blank">SWE-agent</a>, <a href="https://github.com/earendil-works/pi" target="_blank">pi</a>','真实代码库编辑、shell、测试、sandbox、PR 工作流。'],
-      ['Deep Research / RAG Agents','<a href="https://github.com/bytedance/deer-flow" target="_blank">DeerFlow</a>, <a href="https://docs.llamaindex.ai/" target="_blank">LlamaIndex</a>','搜索、抓取、检索、rerank、引用、报告生成。'],
-      ['Tutorial Encyclopedias','<a href="https://github.com/NirDiamant/GenAI_Agents" target="_blank">GenAI_Agents</a>, <a href="https://github.com/datawhalechina/hello-agents" target="_blank">hello-agents</a>, <a href="https://github.com/huggingface/smolagents" target="_blank">smolagents</a>, <a href="https://github.com/NirDiamant/agents-towards-production" target="_blank">agents-towards-production</a>','横向看 ReAct、Plan-and-Execute、Multi-Agent、production patterns。'],
-      ['Browser / Multimodal Agents','<a href="https://github.com/browser-use/browser-use" target="_blank">browser-use</a>, <a href="https://github.com/bytedance/UI-TARS-desktop" target="_blank">UI-TARS-desktop</a>','浏览器/桌面操作、视觉理解、动作空间、失败恢复。']
+      ['Build From Scratch','<a href="https://github.com/shareAI-lab/learn-claude-code" target="_blank">learn-claude-code</a>, <a href="https://github.com/shareAI-lab/claw0" target="_blank">claw0</a>, <a href="https://github.com/datawhalechina/hello-agents" target="_blank">hello-agents</a>','agent loop, tool registry, session, context compaction, gateway, trace, subagents.'],
+      ['Personal / Always-On Agents','<a href="https://github.com/openclaw/openclaw" target="_blank">OpenClaw</a>, <a href="https://github.com/NousResearch/hermes-agent" target="_blank">Hermes Agent</a>, <a href="https://github.com/ttguy0707/CyberClaw" target="_blank">CyberClaw</a>','장기 실행, skills, 메모리, 메시지 진입점, 권한, 보안 감사.'],
+      ['Coding Agents','<a href="https://code.claude.com/docs/en/overview" target="_blank">Claude Code</a>, <a href="https://github.com/openai/codex" target="_blank">OpenAI Codex</a>, <a href="https://github.com/opencode-ai/opencode" target="_blank">OpenCode</a>, <a href="https://github.com/All-Hands-AI/OpenHands" target="_blank">OpenHands</a>, <a href="https://github.com/SWE-agent/SWE-agent" target="_blank">SWE-agent</a>, <a href="https://github.com/earendil-works/pi" target="_blank">pi</a>','실제 코드베이스 편집, shell, 테스트, sandbox, PR workflow.'],
+      ['Deep Research / RAG Agents','<a href="https://github.com/bytedance/deer-flow" target="_blank">DeerFlow</a>, <a href="https://docs.llamaindex.ai/" target="_blank">LlamaIndex</a>','검색, 수집, retrieval, rerank, 인용, 보고서 생성.'],
+      ['Tutorial Encyclopedias','<a href="https://github.com/NirDiamant/GenAI_Agents" target="_blank">GenAI_Agents</a>, <a href="https://github.com/datawhalechina/hello-agents" target="_blank">hello-agents</a>, <a href="https://github.com/huggingface/smolagents" target="_blank">smolagents</a>, <a href="https://github.com/NirDiamant/agents-towards-production" target="_blank">agents-towards-production</a>','ReAct, Plan-and-Execute, Multi-Agent, production patterns를 가로로 비교합니다.'],
+      ['Browser / Multimodal Agents','<a href="https://github.com/browser-use/browser-use" target="_blank">browser-use</a>, <a href="https://github.com/bytedance/UI-TARS-desktop" target="_blank">UI-TARS-desktop</a>','브라우저/데스크톱 조작, 시각 이해, 동작 공간, 실패 복구.']
     ]
   },
   skillsProtocols: {
-    title:'Skills、协议与工具',
+    title:'Skills, 프로토콜과 도구',
     rows:[
-      ['Skills','<a href="https://code.claude.com/docs/en/skills" target="_blank">Claude Code Skills</a>, <a href="https://github.com/openclaw/openclaw/blob/main/docs/tools/skills.md" target="_blank">OpenClaw Skills</a>','把一类任务的流程知识、脚本、模板和验收标准打包成可复用能力。'],
-      ['MCP','<a href="https://modelcontextprotocol.io/" target="_blank">Model Context Protocol</a>','让 agent 标准化连接外部工具、数据源和服务。'],
-      ['A2A','<a href="https://google-a2a.github.io/A2A/specification/" target="_blank">Agent2Agent Protocol</a>','让不同 agent 之间发现、通信和协作。'],
-      ['ACP','<a href="https://agentclientprotocol.com/" target="_blank">Agent Client Protocol</a>','让编辑器、终端、IDE、宿主应用和 agent 之间形成统一接口。'],
-      ['Skill Quality','<a href="https://arxiv.org/abs/2603.15401" target="_blank">SWE-Skills-Bench</a>, <a href="https://arxiv.org/abs/2602.08004" target="_blank">Agent Skills analysis</a>','评估 skills 是否真的提升成功率，而不是制造新的 prompt 噪声。']
+      ['Skills','<a href="https://code.claude.com/docs/en/skills" target="_blank">Claude Code Skills</a>, <a href="https://github.com/openclaw/openclaw/blob/main/docs/tools/skills.md" target="_blank">OpenClaw Skills</a>','특정 작업 유형의 절차 지식, 스크립트, 템플릿, 검수 기준을 재사용 가능한 능력으로 패키징합니다.'],
+      ['MCP','<a href="https://modelcontextprotocol.io/" target="_blank">Model Context Protocol</a>','agent가 외부 도구, 데이터 소스, 서비스를 표준 방식으로 연결하게 합니다.'],
+      ['A2A','<a href="https://google-a2a.github.io/A2A/specification/" target="_blank">Agent2Agent Protocol</a>','서로 다른 agent가 발견, 통신, 협업할 수 있게 합니다.'],
+      ['ACP','<a href="https://agentclientprotocol.com/" target="_blank">Agent Client Protocol</a>','에디터, 터미널, IDE, 호스트 앱, agent 사이에 통합 인터페이스를 만듭니다.'],
+      ['Skill Quality','<a href="https://arxiv.org/abs/2603.15401" target="_blank">SWE-Skills-Bench</a>, <a href="https://arxiv.org/abs/2602.08004" target="_blank">Agent Skills analysis</a>','skills가 새로운 prompt 잡음을 만드는 대신 실제로 성공률을 높이는지 평가합니다.']
     ]
   },
   modernSystems: {
-    title:'现代 Agent 系统',
+    title:'현대 Agent 시스템',
     rows:[
-      ['<a href="https://code.claude.com/docs/en/overview" target="_blank">Claude Code</a>','学 coding agent 的产品化形态：shell、文件、权限、hooks、subagents、MCP。'],
-      ['<a href="https://github.com/shareAI-lab/learn-claude-code" target="_blank">learn-claude-code</a>','从零构建 Claude Code-like nano agent，适合理解 harness engineering。'],
-      ['<a href="https://github.com/shareAI-lab/claw0" target="_blank">claw0</a>','从零构建 OpenClaw-like agent gateway，覆盖 channel、routing、session、memory、delivery、concurrency。'],
-      ['<a href="https://github.com/datawhalechina/hello-agents" target="_blank">hello-agents</a>','中文智能体系统教程，适合从零开始补齐 Agent 原理与实践。'],
-      ['<a href="https://github.com/openclaw/openclaw" target="_blank">OpenClaw</a>','本地优先的个人 agent，适合研究长运行 agent 和系统级工具调用。'],
-      ['<a href="https://github.com/NousResearch/hermes-agent" target="_blank">Hermes Agent</a>','自托管、长期记忆、skills、消息网关和 toolsets。'],
-      ['<a href="https://github.com/ttguy0707/CyberClaw" target="_blank">CyberClaw</a>','透明可控 agent 架构，适合研究审计、两段式执行和安全边界。'],
-      ['<a href="https://github.com/bytedance/deer-flow" target="_blank">DeerFlow</a>','字节开源 long-horizon SuperAgent harness，适合研究 Deep Research、报告、slides、网页、图像和视频生成。'],
-      ['<a href="https://github.com/huggingface/smolagents" target="_blank">smolagents</a>','Hugging Face 轻量 agent 框架，CodeAgent 思路值得研究。'],
-      ['<a href="https://langchain-ai.github.io/langgraph/" target="_blank">LangGraph</a>','状态图和可控 agent 编排，仍然值得作为工程基础学习。'],
-      ['<a href="https://github.com/QwenLM/Qwen-Agent" target="_blank">Qwen-Agent</a>','国产模型生态里的工具调用、RAG、MCP agent 框架。'],
-      ['<a href="https://pydantic.dev/docs/ai/core-concepts/agent/" target="_blank">Pydantic AI</a>','类型安全和结构化输出，适合生产 Python agent。'],
-      ['<a href="https://github.com/earendil-works/pi" target="_blank">pi</a>','AI agent toolkit（TypeScript），含 pi-coding-agent CLI、pi-agent-core 运行时、pi-ai（统一多提供商 LLM API）、pi-tui（终端 UI 库），支持自扩展、Slack 机器人和 vLLM pods。']
+      ['<a href="https://code.claude.com/docs/en/overview" target="_blank">Claude Code</a>','coding agent의 제품화 형태를 배웁니다: shell, 파일, 권한, hooks, subagents, MCP.'],
+      ['<a href="https://github.com/shareAI-lab/learn-claude-code" target="_blank">learn-claude-code</a>','처음부터 Claude Code-like nano agent를 만들며 harness engineering을 이해하기 좋습니다.'],
+      ['<a href="https://github.com/shareAI-lab/claw0" target="_blank">claw0</a>','처음부터 OpenClaw-like agent gateway를 만들며 channel, routing, session, memory, delivery, concurrency를 다룹니다.'],
+      ['<a href="https://github.com/datawhalechina/hello-agents" target="_blank">hello-agents</a>','중국어 agent 시스템 튜토리얼로, Agent 원리와 실습을 처음부터 보강하기 좋습니다.'],
+      ['<a href="https://github.com/openclaw/openclaw" target="_blank">OpenClaw</a>','로컬 우선 개인 agent로, 장기 실행 agent와 시스템 수준 도구 호출을 연구하기 좋습니다.'],
+      ['<a href="https://github.com/NousResearch/hermes-agent" target="_blank">Hermes Agent</a>','셀프 호스팅, 장기 메모리, skills, 메시지 게이트웨이, toolsets.'],
+      ['<a href="https://github.com/ttguy0707/CyberClaw" target="_blank">CyberClaw</a>','투명하고 제어 가능한 agent 아키텍처로, 감사, 2단계 실행, 보안 경계를 연구하기 좋습니다.'],
+      ['<a href="https://github.com/bytedance/deer-flow" target="_blank">DeerFlow</a>','ByteDance 오픈소스 long-horizon SuperAgent harness로, Deep Research, 보고서, slides, 웹페이지, 이미지, 비디오 생성을 연구하기 좋습니다.'],
+      ['<a href="https://github.com/huggingface/smolagents" target="_blank">smolagents</a>','Hugging Face의 경량 agent 프레임워크로, CodeAgent 접근법을 연구할 만합니다.'],
+      ['<a href="https://langchain-ai.github.io/langgraph/" target="_blank">LangGraph</a>','상태 그래프와 제어 가능한 agent 오케스트레이션으로, 여전히 엔지니어링 기초로 배울 가치가 있습니다.'],
+      ['<a href="https://github.com/QwenLM/Qwen-Agent" target="_blank">Qwen-Agent</a>','중국 모델 생태계의 도구 호출, RAG, MCP agent 프레임워크입니다.'],
+      ['<a href="https://pydantic.dev/docs/ai/core-concepts/agent/" target="_blank">Pydantic AI</a>','타입 안전성과 구조화 출력을 제공하며, 프로덕션 Python agent에 적합합니다.'],
+      ['<a href="https://github.com/earendil-works/pi" target="_blank">pi</a>','AI agent toolkit(TypeScript)으로, pi-coding-agent CLI, pi-agent-core 런타임, pi-ai(통합 멀티 제공자 LLM API), pi-tui(터미널 UI 라이브러리)를 포함하며 자체 확장, Slack bot, vLLM pods를 지원합니다.']
     ]
   },
   legacy: {
-    title:'遗留或可选框架',
+    title:'레거시 또는 선택 프레임워크',
     rows:[
-      ['<a href="https://docs.crewai.com/" target="_blank">CrewAI</a>','可了解 role/task/crew 抽象，但很多场景已经被更强的 coding agent / harness 形态覆盖。'],
-      ['<a href="https://microsoft.github.io/autogen/" target="_blank">AutoGen</a>','多 agent 对话框架经典项目，适合了解历史和论文，不必重押。'],
-      ['<a href="https://docs.langchain.com/" target="_blank">LangChain Agents</a>','生态仍重要，但建议重点转向 LangGraph 和具体工程模式。']
+      ['<a href="https://docs.crewai.com/" target="_blank">CrewAI</a>','role/task/crew 추상화를 이해할 수 있지만, 많은 상황은 이미 더 강력한 coding agent / harness 형태로 대체되었습니다.'],
+      ['<a href="https://microsoft.github.io/autogen/" target="_blank">AutoGen</a>','multi-agent 대화 프레임워크의 고전 프로젝트로, 역사와 논문을 이해하기 좋지만 크게 집중할 필요는 없습니다.'],
+      ['<a href="https://docs.langchain.com/" target="_blank">LangChain Agents</a>','생태계는 여전히 중요하지만 LangGraph와 구체적인 엔지니어링 패턴에 더 집중하는 것을 권합니다.']
     ]
   },
   papers: {
-    title:'论文',
+    title:'논문',
     rows:[
-      ['<a href="https://arxiv.org/abs/2210.03629" target="_blank">ReAct</a>','Reasoning + acting 的基础范式。'],
-      ['<a href="https://arxiv.org/abs/2302.04761" target="_blank">Toolformer</a>','模型学习何时调用工具。'],
-      ['<a href="https://arxiv.org/abs/2303.11366" target="_blank">Reflexion</a>','语言反馈和自我改进。'],
-      ['<a href="https://arxiv.org/abs/2304.03442" target="_blank">Generative Agents</a>','记忆、反思、规划驱动的模拟 agent。'],
-      ['<a href="https://arxiv.org/abs/2305.16291" target="_blank">Voyager</a>','开放世界中的长期学习 agent。'],
-      ['<a href="https://arxiv.org/abs/2308.08155" target="_blank">AutoGen</a>','多 agent 对话框架。'],
-      ['<a href="https://arxiv.org/abs/2308.03688" target="_blank">AgentBench</a>','Agent 能力评测。'],
-      ['<a href="https://arxiv.org/abs/2307.13854" target="_blank">WebArena</a>','真实网页环境下的 agent benchmark。'],
-      ['<a href="https://arxiv.org/abs/2310.06770" target="_blank">SWE-bench</a>','真实 GitHub issue 修复评测。'],
-      ['<a href="https://arxiv.org/abs/2405.15793" target="_blank">SWE-agent</a>','软件工程 agent 的 agent-computer interface。'],
-      ['<a href="https://arxiv.org/abs/2604.14228" target="_blank">Dive into Claude Code</a>','从系统设计角度分析 Claude Code 这类 coding agent 的 harness、权限、压缩和扩展机制。'],
-      ['<a href="https://arxiv.org/abs/2605.13357" target="_blank">AI Harness Engineering</a>','把 harness 作为 agent 能力来源来研究。'],
-      ['<a href="https://arxiv.org/abs/2602.14690" target="_blank">Configuring Agentic AI Coding Tools</a>','对 Claude Code、Codex、Gemini、Cursor 等 coding tools 的配置机制分析。'],
-      ['<a href="https://arxiv.org/abs/2604.04759" target="_blank">Your Agent, Their Asset</a>','OpenClaw 等本地 agent 的真实安全风险分析。']
+      ['<a href="https://arxiv.org/abs/2210.03629" target="_blank">ReAct</a>','Reasoning + acting의 기본 패러다임.'],
+      ['<a href="https://arxiv.org/abs/2302.04761" target="_blank">Toolformer</a>','모델이 언제 도구를 호출할지 학습합니다.'],
+      ['<a href="https://arxiv.org/abs/2303.11366" target="_blank">Reflexion</a>','언어 피드백과 자기 개선.'],
+      ['<a href="https://arxiv.org/abs/2304.03442" target="_blank">Generative Agents</a>','메모리, 성찰, 계획 기반 시뮬레이션 agent.'],
+      ['<a href="https://arxiv.org/abs/2305.16291" target="_blank">Voyager</a>','오픈 월드에서의 장기 학습 agent.'],
+      ['<a href="https://arxiv.org/abs/2308.08155" target="_blank">AutoGen</a>','multi-agent 대화 프레임워크.'],
+      ['<a href="https://arxiv.org/abs/2308.03688" target="_blank">AgentBench</a>','Agent 역량 평가.'],
+      ['<a href="https://arxiv.org/abs/2307.13854" target="_blank">WebArena</a>','실제 웹 환경에서의 agent benchmark.'],
+      ['<a href="https://arxiv.org/abs/2310.06770" target="_blank">SWE-bench</a>','실제 GitHub issue 수정 평가.'],
+      ['<a href="https://arxiv.org/abs/2405.15793" target="_blank">SWE-agent</a>','소프트웨어 엔지니어링 agent의 agent-computer interface.'],
+      ['<a href="https://arxiv.org/abs/2604.14228" target="_blank">Dive into Claude Code</a>','시스템 설계 관점에서 Claude Code 같은 coding agent의 harness, 권한, 압축, 확장 메커니즘을 분석합니다.'],
+      ['<a href="https://arxiv.org/abs/2605.13357" target="_blank">AI Harness Engineering</a>','harness를 agent 역량의 원천으로 연구합니다.'],
+      ['<a href="https://arxiv.org/abs/2602.14690" target="_blank">Configuring Agentic AI Coding Tools</a>','Claude Code, Codex, Gemini, Cursor 같은 coding tools의 설정 메커니즘 분석.'],
+      ['<a href="https://arxiv.org/abs/2604.04759" target="_blank">Your Agent, Their Asset</a>','OpenClaw 같은 로컬 agent의 실제 보안 위험 분석.']
     ]
   },
   githubRepos: {
-    title:'GitHub 仓库',
+    title:'GitHub 저장소',
     rows:[
-      ['<a href="https://github.com/datawhalechina/hello-agents" target="_blank">datawhalechina/hello-agents</a>','中文智能体系统教程，从零开始构建智能体。'],
-      ['<a href="https://github.com/shareAI-lab/learn-claude-code" target="_blank">shareAI-lab/learn-claude-code</a>','Bash is all you need，从 0 到 1 学 Claude Code-like agent harness。'],
-      ['<a href="https://github.com/shareAI-lab/claw0" target="_blank">shareAI-lab/claw0</a>','从 0 到 1 学 OpenClaw-like gateway，10 个渐进章节覆盖 agent loop 到 concurrency。'],
-      ['<a href="https://github.com/openclaw/openclaw" target="_blank">openclaw/openclaw</a>','研究本地个人 agent、skills、长运行任务、系统工具和权限边界。'],
-      ['<a href="https://github.com/NousResearch/hermes-agent" target="_blank">NousResearch/hermes-agent</a>','研究自托管 agent、长期记忆、skills、toolsets、多平台消息网关。'],
-      ['<a href="https://github.com/ttguy0707/CyberClaw" target="_blank">ttguy0707/CyberClaw</a>','研究透明 agent、安全审计、两段式执行、双水位记忆和心跳任务。'],
-      ['<a href="https://github.com/bytedance/deer-flow" target="_blank">bytedance/deer-flow</a>','Deep Research / long-horizon agent，适合学习搜索、报告生成、沙箱、memory、skills、subagents、message gateway。'],
-      ['<a href="https://github.com/NirDiamant/GenAI_Agents" target="_blank">NirDiamant/GenAI_Agents</a>','综合教程库，适合横向比较 ReAct、Plan-and-Execute、Multi-Agent 等实现方式。'],
-      ['<a href="https://github.com/NirDiamant/agents-towards-production" target="_blank">NirDiamant/agents-towards-production</a>','production-grade agent 教程库，适合补工程化组件。'],
-      ['<a href="https://github.com/huggingface/smolagents" target="_blank">huggingface/smolagents</a>','轻量 CodeAgent 风格框架，适合研究"让模型写代码执行动作"的范式。'],
-      ['<a href="https://github.com/openai/codex" target="_blank">openai/codex</a>','OpenAI 开源 coding agent CLI，适合研究 sandbox、approval、CLI 产品形态。'],
-      ['<a href="https://github.com/opencode-ai/opencode" target="_blank">opencode-ai/opencode</a>','终端优先的开源 coding agent，适合对照 Claude Code / Codex。'],
-      ['<a href="https://github.com/langchain-ai/langgraph" target="_blank">langchain-ai/langgraph</a>','状态图和可控 agent 编排。'],
-      ['<a href="https://github.com/openai/openai-agents-python" target="_blank">openai/openai-agents-python</a>','OpenAI Agents SDK Python。'],
-      ['<a href="https://github.com/QwenLM/Qwen-Agent" target="_blank">QwenLM/Qwen-Agent</a>','Qwen 生态 agent 框架。'],
-      ['<a href="https://github.com/browser-use/browser-use" target="_blank">browser-use/browser-use</a>','浏览器 agent 实战。'],
-      ['<a href="https://github.com/bytedance/UI-TARS-desktop" target="_blank">bytedance/UI-TARS-desktop</a>','多模态桌面 agent stack，适合研究视觉 UI 操作。'],
-      ['<a href="https://github.com/SWE-agent/SWE-agent" target="_blank">SWE-agent/SWE-agent</a>','软件工程 agent。'],
-      ['<a href="https://github.com/All-Hands-AI/OpenHands" target="_blank">All-Hands-AI/OpenHands</a>','开源 coding agent。'],
-      ['<a href="https://github.com/microsoft/ai-agents-for-beginners" target="_blank">microsoft/ai-agents-for-beginners</a>','系统化入门课程。'],
-      ['<a href="https://github.com/jjyaoao/HelloAgents" target="_blank">jjyaoao/HelloAgents</a>','基于 OpenAI 原生 API 的生产级多智能体框架。'],
-      ['<a href="https://github.com/earendil-works/pi" target="_blank">earendil-works/pi</a>','TypeScript 写的 AI agent toolkit，含 pi-coding-agent CLI、pi-agent-core 运行时、pi-ai（统一多提供商 LLM API）、pi-tui（终端 UI 库），支持 Slack 机器人和 vLLM pods。']
+      ['<a href="https://github.com/datawhalechina/hello-agents" target="_blank">datawhalechina/hello-agents</a>','중국어 agent 시스템 튜토리얼로, 처음부터 agent를 구축합니다.'],
+      ['<a href="https://github.com/shareAI-lab/learn-claude-code" target="_blank">shareAI-lab/learn-claude-code</a>','Bash is all you need, 0에서 1까지 Claude Code-like agent harness를 배웁니다.'],
+      ['<a href="https://github.com/shareAI-lab/claw0" target="_blank">shareAI-lab/claw0</a>','0에서 1까지 OpenClaw-like gateway를 배우며, 10개의 점진적 장이 agent loop부터 concurrency까지 다룹니다.'],
+      ['<a href="https://github.com/openclaw/openclaw" target="_blank">openclaw/openclaw</a>','로컬 개인 agent, skills, 장기 실행 작업, 시스템 도구, 권한 경계를 연구합니다.'],
+      ['<a href="https://github.com/NousResearch/hermes-agent" target="_blank">NousResearch/hermes-agent</a>','셀프 호스팅 agent, 장기 메모리, skills, toolsets, 멀티 플랫폼 메시지 게이트웨이를 연구합니다.'],
+      ['<a href="https://github.com/ttguy0707/CyberClaw" target="_blank">ttguy0707/CyberClaw</a>','투명한 agent, 보안 감사, 2단계 실행, 이중 수위 메모리, heartbeat 작업을 연구합니다.'],
+      ['<a href="https://github.com/bytedance/deer-flow" target="_blank">bytedance/deer-flow</a>','Deep Research / long-horizon agent로, 검색, 보고서 생성, 샌드박스, memory, skills, subagents, message gateway를 배우기 좋습니다.'],
+      ['<a href="https://github.com/NirDiamant/GenAI_Agents" target="_blank">NirDiamant/GenAI_Agents</a>','종합 튜토리얼 저장소로, ReAct, Plan-and-Execute, Multi-Agent 등의 구현 방식을 가로로 비교하기 좋습니다.'],
+      ['<a href="https://github.com/NirDiamant/agents-towards-production" target="_blank">NirDiamant/agents-towards-production</a>','production-grade agent 튜토리얼 저장소로, 엔지니어링 컴포넌트를 보강하기 좋습니다.'],
+      ['<a href="https://github.com/huggingface/smolagents" target="_blank">huggingface/smolagents</a>','경량 CodeAgent 스타일 프레임워크로, "모델이 코드를 작성해 동작을 실행하게 하는" 패러다임을 연구하기 좋습니다.'],
+      ['<a href="https://github.com/openai/codex" target="_blank">openai/codex</a>','OpenAI 오픈소스 coding agent CLI로, sandbox, approval, CLI 제품 형태를 연구하기 좋습니다.'],
+      ['<a href="https://github.com/opencode-ai/opencode" target="_blank">opencode-ai/opencode</a>','터미널 우선 오픈소스 coding agent로, Claude Code / Codex와 비교하기 좋습니다.'],
+      ['<a href="https://github.com/langchain-ai/langgraph" target="_blank">langchain-ai/langgraph</a>','상태 그래프와 제어 가능한 agent 오케스트레이션.'],
+      ['<a href="https://github.com/openai/openai-agents-python" target="_blank">openai/openai-agents-python</a>','OpenAI Agents SDK Python.'],
+      ['<a href="https://github.com/QwenLM/Qwen-Agent" target="_blank">QwenLM/Qwen-Agent</a>','Qwen 생태계 agent 프레임워크.'],
+      ['<a href="https://github.com/browser-use/browser-use" target="_blank">browser-use/browser-use</a>','브라우저 agent 실전.'],
+      ['<a href="https://github.com/bytedance/UI-TARS-desktop" target="_blank">bytedance/UI-TARS-desktop</a>','멀티모달 데스크톱 agent stack으로, 시각 UI 조작을 연구하기 좋습니다.'],
+      ['<a href="https://github.com/SWE-agent/SWE-agent" target="_blank">SWE-agent/SWE-agent</a>','소프트웨어 엔지니어링 agent.'],
+      ['<a href="https://github.com/All-Hands-AI/OpenHands" target="_blank">All-Hands-AI/OpenHands</a>','오픈소스 coding agent.'],
+      ['<a href="https://github.com/microsoft/ai-agents-for-beginners" target="_blank">microsoft/ai-agents-for-beginners</a>','체계적인 입문 과정.'],
+      ['<a href="https://github.com/jjyaoao/HelloAgents" target="_blank">jjyaoao/HelloAgents</a>','OpenAI 네이티브 API 기반의 프로덕션급 multi-agent 프레임워크.'],
+      ['<a href="https://github.com/earendil-works/pi" target="_blank">earendil-works/pi</a>','TypeScript로 작성된 AI agent toolkit으로, pi-coding-agent CLI, pi-agent-core 런타임, pi-ai(통합 멀티 제공자 LLM API), pi-tui(터미널 UI 라이브러리)를 포함하며 Slack bot과 vLLM pods를 지원합니다.']
     ]
   },
   blogs: {
-    title:'深度博客',
+    title:'심층 블로그',
     rows:[
-      ['<a href="https://lilianweng.github.io/posts/2023-06-23-agent/" target="_blank">Lilian Weng: LLM Powered Autonomous Agents</a>','经典长文，系统整理 agent 架构、记忆、规划和工具使用。'],
-      ['<a href="https://simonwillison.net/tags/llms/" target="_blank">Simon Willison: AI/LLM writing</a>','非常务实的 LLM 工程观察，适合补工程直觉。'],
-      ['<a href="https://blog.langchain.com/" target="_blank">LangChain Blog</a>','LangGraph、LangSmith、agent 工程实践。'],
-      ['<a href="https://developers.googleblog.com/agent-development-kit-easy-to-build-multi-agent-applications/" target="_blank">Google Developers Blog: ADK</a>','Google ADK 官方发布文章。']
+      ['<a href="https://lilianweng.github.io/posts/2023-06-23-agent/" target="_blank">Lilian Weng: LLM Powered Autonomous Agents</a>','고전적인 장문 글로, agent 아키텍처, 메모리, 계획, 도구 사용을 체계적으로 정리합니다.'],
+      ['<a href="https://simonwillison.net/tags/llms/" target="_blank">Simon Willison: AI/LLM writing</a>','매우 실용적인 LLM 엔지니어링 관찰로, 엔지니어링 감각을 보강하기 좋습니다.'],
+      ['<a href="https://blog.langchain.com/" target="_blank">LangChain Blog</a>','LangGraph, LangSmith, agent 엔지니어링 실무.'],
+      ['<a href="https://developers.googleblog.com/agent-development-kit-easy-to-build-multi-agent-applications/" target="_blank">Google Developers Blog: ADK</a>','Google ADK 공식 발표 글.']
     ]
   },
   claudeCodeStudy: {
-    title:'Claude Code 学习路径',
+    title:'Claude Code 학습 경로',
     rows:[
-      ['<a href="https://code.claude.com/docs/en/tutorials" target="_blank">Claude Code Common Workflows</a>','官方工作流教程，适合学日常使用和项目协作。'],
-      ['<a href="https://code.claude.com/docs/en/overview" target="_blank">Claude Code Overview</a>','官方入口，理解产品能力和命令行工作方式。'],
-      ['<a href="https://github.com/shareAI-lab/learn-claude-code" target="_blank">learn-claude-code</a>','从零复刻 Claude Code-like agent，适合学 harness 最小实现。'],
-      ['<a href="https://claudecoding.dev/" target="_blank">Claude Code 源码解析</a>','中文架构解读，适合按模块理解实现思路。'],
-      ['<a href="https://code.claudecn.com/" target="_blank">Claude Code 源码分析地图</a>','用地图方式拆解 agent loop、工具、命令和多代理协作。'],
-      ['<a href="https://arxiv.org/abs/2604.14228" target="_blank">Dive into Claude Code</a>','从研究视角总结 Claude Code 的设计空间和 agent harness 模式。'],
-      ['<a href="https://arxiv.org/abs/2604.17460" target="_blank">Agentic Education</a>','用 Claude Code 学 Claude Code 的交互式课程思路。']
+      ['<a href="https://code.claude.com/docs/en/tutorials" target="_blank">Claude Code Common Workflows</a>','공식 workflow 튜토리얼로, 일상 사용과 프로젝트 협업을 배우기 좋습니다.'],
+      ['<a href="https://code.claude.com/docs/en/overview" target="_blank">Claude Code Overview</a>','공식 입구로, 제품 역량과 명령줄 작동 방식을 이해합니다.'],
+      ['<a href="https://github.com/shareAI-lab/learn-claude-code" target="_blank">learn-claude-code</a>','처음부터 Claude Code-like agent를 재현하며 harness 최소 구현을 배우기 좋습니다.'],
+      ['<a href="https://claudecoding.dev/" target="_blank">Claude Code 소스 코드 분석</a>','중국어 아키텍처 해설로, 모듈별 구현 사고를 이해하기 좋습니다.'],
+      ['<a href="https://code.claudecn.com/" target="_blank">Claude Code 소스 코드 분석 지도</a>','지도 방식으로 agent loop, 도구, 명령, multi-agent 협업을 분해합니다.'],
+      ['<a href="https://arxiv.org/abs/2604.14228" target="_blank">Dive into Claude Code</a>','연구 관점에서 Claude Code의 설계 공간과 agent harness 패턴을 요약합니다.'],
+      ['<a href="https://arxiv.org/abs/2604.17460" target="_blank">Agentic Education</a>','Claude Code로 Claude Code를 배우는 인터랙티브 코스 아이디어.']
     ]
   }
 };
@@ -670,7 +670,7 @@ function renderNoteEditor(stageId) {
     // Editing mode
     html += `<div class="note-editor-area">`;
     if (isPreviewing) {
-      let previewHtml = '<p style="color:var(--text-tertiary);font-style:italic">开始输入即可预览</p>';
+      let previewHtml = '<p style="color:var(--text-tertiary);font-style:italic">입력을 시작하면 미리보기가 표시됩니다</p>';
       try {
         if (typeof marked !== 'undefined' && note.trim()) {
           previewHtml = marked.parse(note);
@@ -678,17 +678,17 @@ function renderNoteEditor(stageId) {
       } catch(e) {}
       html += `<div class="note-preview-pane open" id="note-preview-pane-${stageId}">${previewHtml}</div>`;
     }
-    html += `<textarea class="note-textarea" id="note-textarea-${stageId}" oninput="debouncedPreview('${stageId}')" placeholder="用 Markdown 记录你的理解...&#10;&#10;支持标题、列表、代码块、引用等格式">${escapeHtml(note)}</textarea>`;
+    html += `<textarea class="note-textarea" id="note-textarea-${stageId}" oninput="debouncedPreview('${stageId}')" placeholder="Markdown으로 이해한 내용을 기록하세요...&#10;&#10;제목, 목록, 코드 블록, 인용 등의 형식을 지원합니다">${escapeHtml(note)}</textarea>`;
     html += `<div class="note-toolbar">`;
     if (isPreviewing) {
-      html += `<span class="markdown-preview-toggle" onclick="saveNote('${stageId}',document.getElementById('note-textarea-${stageId}').value);renderAll()">🔄 刷新</span>`;
-      html += `<span class="markdown-preview-toggle" onclick="window._previewNote=null;renderAll()" style="color:var(--text-tertiary)">✕ 关闭</span>`;
+      html += `<span class="markdown-preview-toggle" onclick="saveNote('${stageId}',document.getElementById('note-textarea-${stageId}').value);renderAll()">🔄 새로고침</span>`;
+      html += `<span class="markdown-preview-toggle" onclick="window._previewNote=null;renderAll()" style="color:var(--text-tertiary)">✕ 닫기</span>`;
     } else {
-      html += `<span class="markdown-preview-toggle" onclick="window._previewNote='${stageId}';saveNote('${stageId}',document.getElementById('note-textarea-${stageId}').value);renderAll()">👁 预览</span>`;
+      html += `<span class="markdown-preview-toggle" onclick="window._previewNote='${stageId}';saveNote('${stageId}',document.getElementById('note-textarea-${stageId}').value);renderAll()">👁 미리보기</span>`;
     }
-    html += `<span class="note-hint">Markdown 语法支持</span>`;
-    html += `<button class="note-btn" onclick="saveNote('${stageId}',document.getElementById('note-textarea-${stageId}').value);renderAll()">保存</button>`;
-    html += `<button class="note-btn primary" onclick="window._editingNote=null;window._previewNote=null;saveNote('${stageId}',document.getElementById('note-textarea-${stageId}').value);renderAll()">完成</button>`;
+    html += `<span class="note-hint">Markdown 문법 지원</span>`;
+    html += `<button class="note-btn" onclick="saveNote('${stageId}',document.getElementById('note-textarea-${stageId}').value);renderAll()">저장</button>`;
+    html += `<button class="note-btn primary" onclick="window._editingNote=null;window._previewNote=null;saveNote('${stageId}',document.getElementById('note-textarea-${stageId}').value);renderAll()">완료</button>`;
     html += `</div></div>`;
   } else {
     // Preview mode
@@ -700,12 +700,12 @@ function renderNoteEditor(stageId) {
         }
       } catch(e) {}
       html += `<div class="note-preview has-content" onclick="window._editingNote='${stageId}';window._previewNote='${stageId}';renderAll()">`;
-      html += `<div class="note-body"><div class="note-title">📝 你的笔记</div>${rendered}</div>`;
-      html += `<button class="note-btn" onclick="event.stopPropagation();window._editingNote='${stageId}';window._previewNote='${stageId}';renderAll()">编辑</button>`;
+      html += `<div class="note-body"><div class="note-title">📝 내 노트</div>${rendered}</div>`;
+      html += `<button class="note-btn" onclick="event.stopPropagation();window._editingNote='${stageId}';window._previewNote='${stageId}';renderAll()">편집</button>`;
       html += `</div>`;
     } else {
       html += `<div class="note-preview" onclick="window._editingNote='${stageId}';window._previewNote='${stageId}';renderAll()">`;
-      html += `<span class="note-empty">📝 点击这里记录你的理解...</span>`;
+      html += `<span class="note-empty">📝 여기를 클릭해 이해한 내용을 기록하세요...</span>`;
       html += `</div>`;
     }
   }
@@ -732,7 +732,7 @@ function debouncedPreview(stageId) {
     if (typeof marked !== 'undefined') {
       previewPane.innerHTML = text.trim()
         ? marked.parse(text)
-        : '<p style="color:var(--text-tertiary);font-style:italic">开始输入即可预览</p>';
+        : '<p style="color:var(--text-tertiary);font-style:italic">입력을 시작하면 미리보기가 표시됩니다</p>';
     }
   }, 300);
 }
@@ -825,35 +825,35 @@ function renderSidebar() {
   const container = document.getElementById('sidebarContent');
   let html = '';
   if (currentTab === 'learn') {
-    html += '<div class="sidebar-label">学习路线</div>';
+    html += '<div class="sidebar-label">학습 로드맵</div>';
     learningData.stages.forEach(s => {
       const p = calcStageProgress(s.id);
       const badge = p.total > 0 ? `${p.done}/${p.total}` : '';
       html += `<button class="sidebar-link${currentSidebarId===s.id?' active':''}" onclick="switchSidebar('${s.id}')">${s.title}<span class="sidebar-badge">${badge}</span></button>`;
     });
   } else if (currentTab === 'ladder') {
-    html += '<div class="sidebar-label">项目阶梯</div>';
-    html += `<button class="sidebar-link${currentSidebarId==='ladder'?' active':''}" onclick="switchSidebar('ladder')">全部项目</button>`;
+    html += '<div class="sidebar-label">프로젝트 사다리</div>';
+    html += `<button class="sidebar-link${currentSidebarId==='ladder'?' active':''}" onclick="switchSidebar('ladder')">전체 프로젝트</button>`;
   } else if (currentTab === 'resources') {
-    html += '<div class="sidebar-label">精选资源</div>';
+    html += '<div class="sidebar-label">엄선 자료</div>';
     const sections = [
-      {id:'officialGuides',label:'官方指南与博客'},
-      {id:'projectMap',label:'项目地图'},
-      {id:'skillsProtocols',label:'Skills、协议与工具'},
-      {id:'modernSystems',label:'现代 Agent 系统'},
-      {id:'legacy',label:'遗留/可选框架'},
-      {id:'papers',label:'论文'},
-      {id:'githubRepos',label:'GitHub 仓库'},
-      {id:'blogs',label:'深度博客'},
-      {id:'claudeCodeStudy',label:'Claude Code 学习路径'}
+      {id:'officialGuides',label:'공식 가이드와 블로그'},
+      {id:'projectMap',label:'프로젝트 지도'},
+      {id:'skillsProtocols',label:'Skills, 프로토콜과 도구'},
+      {id:'modernSystems',label:'현대 Agent 시스템'},
+      {id:'legacy',label:'레거시/선택 프레임워크'},
+      {id:'papers',label:'논문'},
+      {id:'githubRepos',label:'GitHub 저장소'},
+      {id:'blogs',label:'심층 블로그'},
+      {id:'claudeCodeStudy',label:'Claude Code 학습 경로'}
     ];
     sections.forEach(sec => {
       html += `<button class="sidebar-link${currentSidebarId===sec.id?' active':''}" onclick="switchSidebar('${sec.id}')">${sec.label}</button>`;
     });
     // Learning Principles & Contributing
-    html += '<div class="sidebar-label" style="margin-top:8px">其他</div>';
-    html += `<button class="sidebar-link${currentSidebarId==='principles'?' active':''}" onclick="switchSidebar('principles')">学习原则</button>`;
-    html += `<button class="sidebar-link${currentSidebarId==='contributing'?' active':''}" onclick="switchSidebar('contributing')">贡献指南</button>`;
+    html += '<div class="sidebar-label" style="margin-top:8px">기타</div>';
+    html += `<button class="sidebar-link${currentSidebarId==='principles'?' active':''}" onclick="switchSidebar('principles')">학습 원칙</button>`;
+    html += `<button class="sidebar-link${currentSidebarId==='contributing'?' active':''}" onclick="switchSidebar('contributing')">기여 가이드</button>`;
   }
   container.innerHTML = html;
 }
@@ -876,8 +876,8 @@ function renderMain(q) {
 
   if (currentTab === 'learn') {
     // "What To Learn Now" section
-    if (!q || matchSearch('Claude Code Codex harness OpenClaw Hermes Skills MCP A2A ACP Evaluation safety 当前更值得投入', q)) {
-      html += '<div class="section-desc">Agent 领域变化很快。当前更值得投入的不是老式"角色扮演多 agent 框架"，而是这些更贴近真实生产力的方向：</div>';
+    if (!q || matchSearch('Claude Code Codex harness OpenClaw Hermes Skills MCP A2A ACP Evaluation safety 지금 더 투자할 만한 것', q)) {
+      html += '<div class="section-desc">Agent 분야는 빠르게 변합니다. 지금 더 투자할 만한 것은 오래된 "역할극식 multi-agent 프레임워크"가 아니라 실제 생산성에 더 가까운 다음 방향입니다:</div>';
       html += '<div class="priority-grid">';
       learningData.priorityTable.forEach(p => {
         if (q && !matchSearch(`${p.learn} ${p.why}`, q)) return;
@@ -889,7 +889,7 @@ function renderMain(q) {
 
     // Global progress
     const tp = calcTotalProgress();
-    html += `<div id="globalProgress">${tp.done === tp.total && tp.total > 0 ? '<div style="text-align:center;padding:8px 0 16px;font-weight:700;color:var(--success);font-size:1.05em">🎉 全部完成！你已经完整走完了 Agent 学习路线。</div>' : ''}</div>`;
+    html += `<div id="globalProgress">${tp.done === tp.total && tp.total > 0 ? '<div style="text-align:center;padding:8px 0 16px;font-weight:700;color:var(--success);font-size:1.05em">🎉 전체 완료! Agent 학습 로드맵을 모두 마쳤습니다.</div>' : ''}</div>`;
 
     // Stages
     learningData.stages.forEach(stage => {
@@ -905,7 +905,7 @@ function renderMain(q) {
 
       const p = calcStageProgress(stage.id);
       const doneClass = p.done === p.total && p.total > 0 ? 'green' : (p.done > 0 ? 'yellow' : 'neutral');
-      const badgeText = p.done === p.total && p.total > 0 ? '✓ 完成' : `${p.done}/${p.total}`;
+      const badgeText = p.done === p.total && p.total > 0 ? '✓ 완료' : `${p.done}/${p.total}`;
 
       html += `<div class="stage-card" id="${stage.id}">`;
       html += `<div class="stage-card-header">`;
@@ -928,26 +928,26 @@ function renderMain(q) {
 
       // Output
       if (stage.output && (!q || matchSearch(stage.output, q))) {
-        html += `<div class="sub-content"><strong>🎯 产出：</strong>${highlightText(stage.output, q)}</div>`;
+        html += `<div class="sub-content"><strong>🎯 산출물: </strong>${highlightText(stage.output, q)}</div>`;
         html += renderNoteEditor(stage.id);
       }
 
       // Reading
       if (stage.reading && (!q || matchSearch(stage.reading, q))) {
-        html += `<div class="sub-content"><strong>📖 推荐阅读：</strong></div>`;
+        html += `<div class="sub-content"><strong>📖 추천 읽기:</strong></div>`;
         html += `<div class="sub-content">${stage.reading}</div>`;
       }
 
       // Projects
       if (stage.projects && (!q || matchSearch(stage.projects, q))) {
-        html += `<div class="sub-content"><strong>🔗 开源项目参考：</strong></div>`;
+        html += `<div class="sub-content"><strong>🔗 오픈소스 프로젝트 참고:</strong></div>`;
         html += `<div class="sub-content">${stage.projects}</div>`;
       }
 
       html += `</div>`;
     });
   } else if (currentTab === 'ladder') {
-    html += '<div class="section-desc">以下项目不按知识分类，按"如果你本周要做个东西"来排。每一档做一个可运行作品，从 Calculator Agent 一路做到 Production Harness。</div>';
+    html += '<div class="section-desc">아래 프로젝트는 지식 분류가 아니라 "이번 주에 무언가를 만든다면"이라는 기준으로 정렬했습니다. 각 단계마다 실행 가능한 결과물을 하나씩 만들며 Calculator Agent에서 Production Harness까지 나아가세요.</div>';
     html += `<div id="ladderSection">`;
     ladderData.forEach(l => {
       if (q && !matchSearch(`${l.project} ${l.desc}`, q)) return;
@@ -983,7 +983,7 @@ function renderMain(q) {
       }
       if (!secMatch) return;
       visibleCount++;
-      const headers = sec.rows[0] && sec.rows[0].length === 3 ? ['名称','来源','解决的问题'] : ['名称','说明'];
+      const headers = sec.rows[0] && sec.rows[0].length === 3 ? ['이름','출처','해결하는 문제'] : ['이름','설명'];
       html += `<div class="resource-section-title" id="${secId}">${highlightText(sec.title, q)}</div>`;
       html += '<div class="resource-table-wrap"><table><thead><tr>';
       headers.forEach(h => html += `<th>${h}</th>`);
@@ -1007,10 +1007,10 @@ function renderMain(q) {
       'Keep humans in the loop for risky actions.',
       'Respect platform rules, copyrights, and data access boundaries.'
     ];
-    let princMatch = !q || principles.some(p=>matchSearch(p,q)) || matchSearch('学习原则 Learning Principles', q);
+    let princMatch = !q || principles.some(p=>matchSearch(p,q)) || matchSearch('학습 원칙 Learning Principles', q);
     if (princMatch) {
       visibleCount++;
-      html += `<div class="resource-section-title" id="principles">学习原则 / Learning Principles</div>`;
+      html += `<div class="resource-section-title" id="principles">학습 원칙 / Learning Principles</div>`;
       html += '<div class="info-cards">';
       principles.forEach(p => {
         if (q && !matchSearch(p, q)) return;
@@ -1020,34 +1020,34 @@ function renderMain(q) {
     }
 
     // Contributing
-    let contrMatch = !q || matchSearch('贡献 Contributing 请优先 请避免 good contributions', q);
+    let contrMatch = !q || matchSearch('기여 Contributing 우선 제출 권장 피해야 할 것 good contributions', q);
     if (contrMatch) {
       visibleCount++;
-      html += `<div class="resource-section-title" id="contributing">贡献指南 / Contributing</div>`;
+      html += `<div class="resource-section-title" id="contributing">기여 가이드 / Contributing</div>`;
       html += '<div class="info-cards">';
-      html += `<div class="info-card"><div class="info-card-title">✅ 请优先提交</div><div class="info-card-body"><ul><li>官方文档和官方工程博客</li><li>高质量论文和 benchmark</li><li>有可运行代码的开源仓库</li><li>有原创见解的严肃技术博客</li><li>帮助学习者练习特定技能的小项目</li></ul></div></div>`;
-      html += `<div class="info-card"><div class="info-card-title">❌ 请避免</div><div class="info-card-body"><ul><li>搬运的平台帖子</li><li>没有实质内容的课程广告</li><li>私有或付费内容</li><li>绕过平台规则的爬取导向内容</li></ul></div></div>`;
+      html += `<div class="info-card"><div class="info-card-title">✅ 우선 제출 권장</div><div class="info-card-body"><ul><li>공식 문서와 공식 엔지니어링 블로그</li><li>고품질 논문과 benchmark</li><li>실행 가능한 코드가 있는 오픈소스 저장소</li><li>독창적인 통찰이 있는 진지한 기술 블로그</li><li>학습자가 특정 기술을 연습하도록 돕는 작은 프로젝트</li></ul></div></div>`;
+      html += `<div class="info-card"><div class="info-card-title">❌ 피해야 할 것</div><div class="info-card-body"><ul><li>그대로 옮긴 플랫폼 게시물</li><li>실질 내용이 없는 강의 광고</li><li>비공개 또는 유료 콘텐츠</li><li>플랫폼 규칙을 우회하는 크롤링 지향 콘텐츠</li></ul></div></div>`;
       html += '</div>';
     }
 
     // Maintainer
-    if (!q || matchSearch('陈思州 maintainer 维护者', q)) {
-      html += `<div style="text-align:center;margin-top:40px;padding:20px;color:var(--text-secondary);font-size:0.9em">Curated by <a href="https://github.com/jjyaoao" target="_blank">陈思州</a> (Datawhale 成员) <a href="https://www.xiaohongshu.com/user/profile/67b9cc34000000000e013517" target="_blank" style="color:#e93c49">小红书</a></div>`;
+    if (!q || matchSearch('천쓰저우 maintainer 관리자', q)) {
+      html += `<div style="text-align:center;margin-top:40px;padding:20px;color:var(--text-secondary);font-size:0.9em">Curated by <a href="https://github.com/jjyaoao" target="_blank">천쓰저우</a> (Datawhale 멤버) <a href="https://www.xiaohongshu.com/user/profile/67b9cc34000000000e013517" target="_blank" style="color:#e93c49">샤오홍슈</a></div>`;
     }
   }
 
   // No results
   if (visibleCount === 0 && q) {
-    html = `<div class="no-results show"><div class="no-results-icon">🔍</div><div>没有找到匹配 "<strong>${q}</strong>" 的内容</div><div style="color:var(--text-tertiary);margin-top:8px;font-size:0.9em">试试其他关键词，比如 "tool call"、"MCP"、"eval"</div></div>`;
+    html = `<div class="no-results show"><div class="no-results-icon">🔍</div><div>"<strong>${q}</strong>"와 일치하는 항목을 찾지 못했습니다</div><div style="color:var(--text-tertiary);margin-top:8px;font-size:0.9em">다른 키워드를 시도해 보세요. 예: "tool call", "MCP", "eval"</div></div>`;
   }
 
   // How to use
   if (!q && currentTab === 'learn') {
     html = `<div class="info-cards" style="margin-bottom:20px">
-      <div class="info-card"><div class="info-card-title">🆕 新手</div><div class="info-card-body">按「Learning Todo List」从上到下做，每完成一项就打勾。</div></div>
-      <div class="info-card"><div class="info-card-title">💡 已会 LLM 应用</div><div class="info-card-body">从 Stage 2 或 Stage 3 开始，重点补 Agent loop、工具调用、评测和工程化。</div></div>
-      <div class="info-card"><div class="info-card-title">🔨 想做项目</div><div class="info-card-body">直接看「项目阶梯」，每一档做一个可运行作品。</div></div>
-      <div class="info-card"><div class="info-card-title">📚 只想找资料</div><div class="info-card-body">看「精选资源」，优先读官方文档和经典论文。</div></div>
+      <div class="info-card"><div class="info-card-title">🆕 초보자</div><div class="info-card-body">"Learning Todo List"를 위에서 아래로 진행하고, 한 항목을 끝낼 때마다 체크하세요.</div></div>
+      <div class="info-card"><div class="info-card-title">💡 LLM 앱 경험자</div><div class="info-card-body">Stage 2 또는 Stage 3부터 시작해 Agent loop, 도구 호출, 평가, 엔지니어링을 중점적으로 보강하세요.</div></div>
+      <div class="info-card"><div class="info-card-title">🔨 프로젝트 만들기</div><div class="info-card-body">바로 "프로젝트 사다리"를 보고 각 단계마다 실행 가능한 결과물을 하나씩 만드세요.</div></div>
+      <div class="info-card"><div class="info-card-title">📚 자료만 찾기</div><div class="info-card-body">"엄선 자료"를 보고 공식 문서와 고전 논문을 우선 읽으세요.</div></div>
     </div>` + html;
   }
 
@@ -1062,9 +1062,9 @@ function updateProgressBar() {
   const bar = document.getElementById('globalProgress');
   if (bar) {
     bar.innerHTML = `
-      <div class="progress-stats"><span>总进度</span><span><strong>${tp.done}</strong> / ${tp.total} <span style="font-size:0.85em;color:var(--text-tertiary)">(${pct}%)</span></span></div>
+      <div class="progress-stats"><span>전체 진행률</span><span><strong>${tp.done}</strong> / ${tp.total} <span style="font-size:0.85em;color:var(--text-tertiary)">(${pct}%)</span></span></div>
       <div class="progress-bar-wrap"><div class="progress-bar-fill" style="width:${pct}%"></div></div>
-      ${tp.done === tp.total && tp.total > 0 ? '<div style="text-align:center;padding:8px 0 16px;font-weight:700;color:var(--success);font-size:1.05em">🎉 全部完成！你已经完整走完了 Agent 学习路线。</div>' : ''}
+      ${tp.done === tp.total && tp.total > 0 ? '<div style="text-align:center;padding:8px 0 16px;font-weight:700;color:var(--success);font-size:1.05em">🎉 전체 완료! Agent 학습 로드맵을 모두 마쳤습니다.</div>' : ''}
     `;
   }
 }
